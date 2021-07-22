@@ -9,14 +9,21 @@ DEBUG = False
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='pskdjg-34098e-340t98dsgljsfladf09we87n8kj786876@@@@khjhlkafadljad')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['']
 
 # serving staticfiles through Whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # new
 
+
+
 # Database configuration through dj-database-url
-if "DATABASE_URL" in env:
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+DATABASES["default"].update(db_from_env)
 
 # Deployment checklist 
 SECURE_SSL_REDIRECT = True # new
