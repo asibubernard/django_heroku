@@ -9,7 +9,7 @@ DEBUG = False
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='pskdjg-34098e-340t98dsgljsfladf09we87n8kj786876@@@@khjhlkafadljad')
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['django-heroku-1.herokuapp.com', '127.0.0.1', 'django-heroku.herokuapp.com']
 
 # serving staticfiles through Whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # new
